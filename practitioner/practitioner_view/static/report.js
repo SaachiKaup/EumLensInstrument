@@ -1,6 +1,9 @@
 $(document).ready(function() {
     // Initialize DataTable
     var userTable = $('#userTable').DataTable({
+        "paging": false,
+        "ordering": false,
+        "info": false
       
     });
  
@@ -11,7 +14,20 @@ $(document).ready(function() {
 
     $('#userTable').on('click', '.reportBtn', function() {
 
-        alert('Generating report')
+        $('#reportModal').show();
+    })
+
+    $('#generateReports').on('click', function(){
+        var reports = [];
+        $('input[name="reportType"]:checked').each(function (){
+            reports.push($(this).val());
+        });
+
+        alert('generating: ' + reports.join(', '));
+
+        $('input[name="reportType"]').prop('checked', false);
+
+        $('#reportModal').hide();
     })
 
     $('#userTable').on('click', '.NotifyBtn', function() {

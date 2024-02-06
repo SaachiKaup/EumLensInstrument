@@ -1,29 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.core.mail import get_connection, send_mail
-import logging
-
-logger = logging.getLogger(__name__)
 
 def login(request):
     return render(request, 'login.html')
 
+def home(request):
+    return render(request, 'home.html')
+
 def add_user(request):
-    return render(request, 'table.html')
+    return render(request, 'add_user.html')
 
 def user_activity(request):
     return render(request, 'user_activity.html')
 
-def mail(request):
-    connection = get_connection()
-    connection.open()
-    send_mail(
-        'Invitation to take the instrument.',
-        'Practitioner invites you to take the EUM I instrument.',
-        'eum.test.mails@gmail.com',
-        ['saachi.kaup@gmail.com', 'aarushigulati07@gmail.com', 'ishaatteri@gmail.com', 'saumyachat03@gmail.com'],
-        fail_silently=False
-    )
-    connection.close()
-    return HttpResponse("Sent.")
+def bulk_upload(request):
+    return render(request, 'bulk_upload.html')
 
+def report(request):
+    return render(request, 'report.html')
+
+def bootstrap(request):
+    return render(request, 'bootstrap.html')

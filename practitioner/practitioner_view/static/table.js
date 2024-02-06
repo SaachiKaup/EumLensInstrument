@@ -1,11 +1,12 @@
 $(document).ready(function() {
     // Initialize DataTable
     var userTable = $('#userTable').DataTable({
+      "paging": false,
+      "ordering": false,
+      "info": false
       
     });
- 
-    // Sample data
-    // userTable.row.add(['John Doe', 'john@example.com', 'EUM-I']).draw();
+
  
     // Add User button click event
     $('#addUserBtn').on('click', function() {
@@ -26,6 +27,15 @@ $(document).ready(function() {
        var userTest = userTestArray.join(', ');
 
        var userType = $('#userType').val();
+       
+       if (userType === 'Group'){
+        var groupID = prompt('Enter Group ID:');
+        userType = groupID;
+        if (groupID === null || groupID === ''){
+           $(this).val('Individual');
+        }
+      }
+
 
        var newRow = userTable.row.add([userName, userEmail, userTest, userType,'<button class="removeBtn"> Remove </button>']).draw().node();
 
