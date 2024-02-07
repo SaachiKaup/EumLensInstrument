@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Include Bootstrap CSS from CDN -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
+  <title>Bootstrap Table with Add Feature</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>Generate Report</h2>
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody id="data-table-body">
+      <!-- Data will be added dynamically here -->
+    </tbody>
+  </table>
+
+  <div id="reportModal", style="display: none;">
+      <fieldset>
+       <label>Select reports:</label>
+       <div>
+       <input type="checkbox" id="EUM-I" name="reportType" value="EUM-I">
+       <label for="EUM-I">Eum-I</label>
+       </div>
+
+       <input type="checkbox" id="EUM-O" name="reportType" value="EUM-O">
+       <label for="EUM-O">Eum-O</label>
+
+       <div>
+           <button id="generateReports" onclick="generateReports()">Generate</button>
+       </div>
+      </fieldset>
+   </div>
+
+</div>
+
+<div>
+  <a href="{% url 'home' %}"><button>Home</button></a>
+</div>
+
+<!-- Include Bootstrap JS and Popper.js from CDN -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+   var newRow1 = '<tr><td>' + 'john' + '</td><td>' + 'john@email.com' + '</td><td><button class="btn btn-warning btn-sm" onclick="genReport(this)">Generate Report</button> </td></tr>'; 
+
+   document.getElementById('data-table-body').innerHTML += newRow1;
+
+  function genReport(button) {
+   document.getElementById('reportModal').style.display='flex';
+
+  }
+
+  function generateReports(button){
+    
+  }
+
+  
+</script>
+
+</body>
+</html>

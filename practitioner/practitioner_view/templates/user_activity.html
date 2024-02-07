@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIEW STATUS</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.18.3/bootstrap-table.min.css">
+</head>
+<body>
+
+<div class="container">
+  <!-- <button id="addDataBtn" class="btn btn-primary mb-3">Add Data</button> -->
+  <table id="table" data-toggle="table" data-search="true" data-filter-control="true">
+    <thead>
+      <tr>
+        <th data-field="name" data-filter-control="input" data-sortable="true">Name</th>
+        <th data-field="email" data-filter-control="input" data-sortable="true">Email</th>
+        <th data-field="Test" data-filter-control="input">Test</th>
+        <th data-field="groupID" data-filter-control="input" data-sortable="true">Group ID</th>
+        <th data-field="Date" data-filter-control="input" data-sortable="true">Date</th>
+        <th data-field="Status" data-filter-control="input" data-sortable="true">Status</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+        <!-- data will be added here -->
+    </tbody>
+  </table>
+  <br><br>
+  <div>
+    <a href="{% url 'home' %}"><button>Home</button></a>
+  </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.18.3/bootstrap-table.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.18.3/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+<script>
+  // Function to add data to the table
+  function addData(name, email, test, group, date, status) {
+    const tableBody = document.getElementById('tableBody');
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <td>${name}</td>
+      <td>${email}</td>
+      <td>${test}</td>
+      <td>${group}</td>
+      <td>${date}</td>
+      <td>${status}</td>
+    `;
+    tableBody.appendChild(newRow);
+  }
+
+  addData('Isha', 'isha@gmail.com','EUM-I, EUM-O', '234','09-02-2024', 'Instrument NOT taken');
+  addData('john', 'john@email.com','EUM-I', '461','01-01-2024', 'Instrument taken');
+  addData('jane', 'jane@example.com','EUM-O', '219','02-03-2024', 'Instrument NOT taken');
+
+</script>
+</body>
+</html>

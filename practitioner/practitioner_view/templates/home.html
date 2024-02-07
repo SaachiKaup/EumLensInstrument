@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Include Bootstrap CSS from CDN -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <title>Bootstrap Table with Add Feature</title>
+</head>
+<body>
+    <br><br>
+    <div>
+        <div>
+            <p>To add individual users press Individual, but if you would like to upload a group of users press Bulk.</p>
+        </div>
+        <a href="{% url 'add_user' %}"><button>Individual</button></a>
+        <a href="{% url 'bulk_upload' %}"><button>Bulk</button></a>
+    </div>
+    <br><br>
+    <div>
+        <a href="{% url 'user_activity' %}"><button>View Status</button></a>
+        <a href="{% url 'report' %}"><button>Report</button></a>
+
+    </div>
+
+
+
+<div class="container mt-5">
+  <!-- <h2>Table with Name and Email</h2> -->
+
+  <!-- Table -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Created On</th>
+        <th>Instrument Status</th>
+      </tr>
+    </thead>
+    <tbody id="data-table-body">
+      <!-- Data will be added dynamically here -->
+    </tbody>
+  </table>
+
+</div>
+
+
+
+<!-- Include Bootstrap JS and Popper.js from CDN -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    var newRow1 = '<tr><td>' + 'john' + '</td><td>' + 'john@email.com' + '</td><td>' + '01-02-2024' + '</td><td>' + 'Instrument Taken' + '</td></tr>'; 
+    var newRow2 = '<tr><td>' + 'jane' + '</td><td>' + 'jane@gmail.com' + '</td><td>' + '09-02-2024' + '</td><td>' + 'Instrument NOT Taken' + '</td></tr>';
+
+
+    document.getElementById('data-table-body').innerHTML += newRow1;
+    document.getElementById('data-table-body').innerHTML += newRow2;
+
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="..\static\table.css">
+    <title>Login</title>
+    <!-- Google Sign-In meta tags -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+</head>
+<body>
+    <h2>Enter log in details</h2>
+    <br>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        Enter name:<input type="text" name="pract_name">
+        <br><br>
+        Enter email id:<input type="email" name="emailID">
+        <br><br>
+        <!-- Google Sign-In button -->
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <br><br>
+        <button type="submit">Log In</button>
+    </form>
+
+    <!-- JavaScript for Google Sign-In -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        function onSignIn(googleUser) {
+            // The ID token is passed to your backend server so it can be authenticated there
+            var id_token = googleUser.getAuthResponse().id_token;
+            // You can also retrieve the user's basic profile information like name and email
+            var profile = googleUser.getBasicProfile();
+            console.log('ID Token: ' + id_token);
+            console.log('Name: ' + profile.getName());
+            console.log('Email: ' + profile.getEmail());
+            // You can perform additional actions here, like sending the token to your backend for verification
+        }
+    </script>
+</body>
+</html>
